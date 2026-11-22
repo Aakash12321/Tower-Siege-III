@@ -135,14 +135,11 @@ function keyPressed(){
   }
 }
 
-async function getBackgroundImage()
-{ var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
- var responseJSON = await response.json(); 
- console.log(responseJSON)
- var datetime = responseJSON.datetime; 
- var hour = datetime.slice(11, 13); 
- //console.log(hour); 
- if (hour >= 06 && hour <= 18) 
+function getBackgroundImage()
+{
+ // use the player's own clock (the old http:// time API is blocked on https pages)
+ var h = hour();
+ if (h >= 6 && h <= 18)
  { 
    bg = "day.jpg"; 
  } 
